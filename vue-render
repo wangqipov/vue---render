@@ -1,4 +1,4 @@
-renderHeader:function(h, obj){
+                renderHeader:function(h, obj){
 
 
                     var column=obj.column;
@@ -63,9 +63,43 @@ renderHeader:function(h, obj){
                                         }
                                     })(),
                                 ]),
-                                h('div', { class: 'numberOpretionDiv_button1'},[
-                                    h('el-radio', {props: {label:'and',value: app.numberOpretionDiv_radio}, domProps:{innerHTML:'且' }}),
-                                    h('el-radio', {props: {label:'or',value: app.numberOpretionDiv_radio}, domProps:{innerHTML:'或' }}),
+                                h('div', { class: 'numberOpretionDiv_input'},[
+                                    h('el-select', {
+                                        props: {size:'small',placeholder:'请选择',value: app.numberOpretionDiv_radio,},
+                                        on:{input: function(value){app.numberOpretionDiv_radio = value; }}
+                                    },[
+                                        h('el-option', { props: {label:'且',value:'and'}}),
+                                        h('el-option', { props: {label:'或',value:'or'}}),
+
+
+                                    ])
+                                    // h('el-radio-group',{
+                                    //         props:{
+                                    //             value:app.numberOpretionDiv_radio,
+                                    //             // 'v-model': app.numberOpretionDiv_radio
+                                    //         },
+                                    //
+                                    //     on: {
+                                    //         change:function(val) {
+                                    //             app.numberOpretionDiv_radio = val;
+                                    //
+                                    //         }
+                                    //     }
+                                    //     },[
+                                    //         h('el-radio',{
+                                    //             props:{
+                                    //                 label: 'and',
+                                    //             },
+                                    //
+                                    //         },'且'),
+                                    //         h('el-radio',{
+                                    //             props:{
+                                    //                 label: 'or'
+                                    //             }
+                                    //         },'或')
+                                    //     ]
+                                    // )
+
                                     ]
                                 )
 
@@ -115,8 +149,8 @@ renderHeader:function(h, obj){
 
 
                             ]),
-                            h('div', { class: 'filter_block'}, [
-                                h('button', { class: 'el-button', on: { click: function() { app.numberOpretionDivSubmit()}}, domProps:{innerHTML:'确定' }}),
+                            h('div', { class: '',style:'padding: 8px 0px 0 0;text-align: right;'}, [
+                                h('button', { class: 'el-button',style:'margin-right: 6px;', on: { click: function() { app.numberOpretionDivSubmit()}}, domProps:{innerHTML:'确定' }}),
                                 h('button', { class: 'el-button el-button--grey is-plain', on: { click: function() { app.cancelDtsScreening()}}, domProps:{innerHTML:'重置'} }),
                             ]),
 
