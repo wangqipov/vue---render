@@ -1,0 +1,127 @@
+renderHeader:function(h, obj){
+
+
+                    var column=obj.column;
+                    // var variableType = '';
+                    // $.each(app.variableInfoList,function(index, value) {
+                    //     if(value.oldName == column.property){
+                    //         variableType = value.variableType;
+                    //     }
+                    // })
+
+                    return h('span', {}, [
+                        h('span', {}, column.label),
+                        h('el-popover', {class:'filter_pop',props: {placement: 'bottom', title: column.property, width: '294', trigger: 'click'}}, [
+                            h('i', {slot: 'reference', class: 'el-icon-caret-bottom', style: 'color:gray;font-size:16px;margin-left:10px;'}),
+                            h('div', { class: 'filter_block', style:' border-top: 1px solid #EDEDED;'}, [
+                                h('div', { class: 'numberOpretionDiv_button', on: { click: function() { app.createVarReplica()}}, domProps:{innerHTML:'插入当前列' }}),
+                                h('div', { class: 'numberOpretionDiv_button', on: { click: function() { app.delDtsVar()}}, domProps:{innerHTML:'删除'} }),
+                            ]),
+                            h('div', { class: 'filter_block'}, [
+                                h('div', { class: 'numberOpretionDiv_button', on: { click: function() { app.sortDtsVar('ASC')}}, domProps:{innerHTML:'升序' }}),
+                                h('div', { class: 'numberOpretionDiv_button', on: { click: function() { app.sortDtsVar('DESC')}}, domProps:{innerHTML:'降序'} }),
+                            ]),
+                            h('div', { class: 'filter_block'}, [
+                                h('div', { class: 'numberOpretionDiv_button1'},[
+                                    h('span', { class: 'numberOpretionDiv_input',style:'margin-right: 5px'},[
+                                        h('el-select', {
+                                            props: {size:'small',placeholder:'请选择',value: app.numberOpretionDiv_select1,},
+                                            on:{input: function(value){app.numberOpretionDiv_select1 = value; }}
+                                        },[
+                                            h('el-option', { props: {label:'无',value:''}}),
+                                            h('el-option', { props: {label:'介于',value:'()'}}),
+                                            h('el-option', { props: {label:'大于',value:'>'}}),
+                                            h('el-option', { props: {label:'大于等于',value:'≥'}}),
+                                            h('el-option', { props: {label:'等于',value:'='}}),
+                                            h('el-option', { props: {label:'不等于',value:'≠'}}),
+                                            h('el-option', { props: {label:'小于',value:'<'}}),
+                                            h('el-option', { props: {label:'小于等于',value:'≤'}}),
+
+                                        ]),
+                                    ]),
+                                    h('span', { class: 'numberOpretionDiv_input'},[
+                                        h('el-input', {
+                                            props: {size:'small',value: app.numberOpretionDiv_input1},
+                                            on:{input: function(value){app.numberOpretionDiv_input1 = value; console.log(app.numberOpretionDiv_input1)}}
+                                            }
+                                        ),
+                                    ]),
+                                    (function() {
+                                        if(app.numberOpretionDiv_select1=='()') {
+                                            return h('span', { domProps:{innerHTML:'-' }})
+                                        }
+                                    })(),
+                                    (function() {
+                                        if(app.numberOpretionDiv_select1=='()') {
+                                            return h('span', { class: 'numberOpretionDiv_input'},[
+                                                h('el-input', {
+                                                        props: {size:'small',value: app.numberOpretionDiv_input2},
+                                                        on:{input: function(value){app.numberOpretionDiv_input2 = value; console.log(app.numberOpretionDiv_input1)}}
+                                                    }
+                                                ),
+                                            ])
+                                        }
+                                    })(),
+                                ]),
+                                h('div', { class: 'numberOpretionDiv_button1'},[
+                                    h('el-radio', {props: {label:'and',value: app.numberOpretionDiv_radio}, domProps:{innerHTML:'且' }}),
+                                    h('el-radio', {props: {label:'or',value: app.numberOpretionDiv_radio}, domProps:{innerHTML:'或' }}),
+                                    ]
+                                )
+
+                            ]),
+                            h('div', { class: 'filter_block'}, [
+                                h('div', { class: 'numberOpretionDiv_button1'},[
+                                    h('span', { class: 'numberOpretionDiv_input',style:'margin-right: 5px'},[
+                                        h('el-select', {
+                                            props: {size:'small',placeholder:'请选择',value: app.numberOpretionDiv_select2,},
+                                            on:{input: function(value){app.numberOpretionDiv_select2 = value; }}
+                                        },[
+                                            h('el-option', { props: {label:'无',value:''}}),
+                                            h('el-option', { props: {label:'介于',value:'()'}}),
+                                            h('el-option', { props: {label:'大于',value:'>'}}),
+                                            h('el-option', { props: {label:'大于等于',value:'≥'}}),
+                                            h('el-option', { props: {label:'等于',value:'='}}),
+                                            h('el-option', { props: {label:'不等于',value:'≠'}}),
+                                            h('el-option', { props: {label:'小于',value:'<'}}),
+                                            h('el-option', { props: {label:'小于等于',value:'≤'}}),
+
+                                        ]),
+                                    ]),
+                                    h('span', { class: 'numberOpretionDiv_input'},[
+                                        h('el-input', {
+                                                props: {size:'small',value: app.numberOpretionDiv_input3},
+                                                on:{input: function(value){app.numberOpretionDiv_input3 = value; }}
+                                            }
+                                        ),
+                                    ]),
+                                    (function() {
+                                        if(app.numberOpretionDiv_select2=='()') {
+                                            return h('span', { domProps:{innerHTML:'-' }})
+                                        }
+                                    })(),
+                                    (function() {
+                                        if(app.numberOpretionDiv_select2=='()') {
+                                            return h('span', { class: 'numberOpretionDiv_input'},[
+                                                h('el-input', {
+                                                        props: {size:'small',value: app.numberOpretionDiv_input4},
+                                                        on:{input: function(value){app.numberOpretionDiv_input4 = value; }}
+                                                    }
+                                                ),
+                                            ])
+                                        }
+                                    })(),
+                                ]),
+
+
+                            ]),
+                            h('div', { class: 'filter_block'}, [
+                                h('button', { class: 'el-button', on: { click: function() { app.numberOpretionDivSubmit()}}, domProps:{innerHTML:'确定' }}),
+                                h('button', { class: 'el-button el-button--grey is-plain', on: { click: function() { app.cancelDtsScreening()}}, domProps:{innerHTML:'重置'} }),
+                            ]),
+
+
+
+                        ])
+                    ]);
+                },
